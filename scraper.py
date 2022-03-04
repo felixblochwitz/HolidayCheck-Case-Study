@@ -1,4 +1,5 @@
 import requests as req
+import pandas as pd
 import json
 
 
@@ -14,12 +15,15 @@ api_key = "91f67b2a-520b-4f9f-a4ca-edcb0d610454"
 
 
 def api_wrapper(query, start_date, api_key):
-    api_str = f'https://content.guardianapis.com/search?q="{query}"&from-date={start_date}&api-key={api_key}'
+    api_str = f'https://content.guardianapis.com/search?q="{query}"&from-date={start_date}&order-by=oldest&api-key={api_key}&type=article&query-fields=headline'
 
-    result_json = req.get(api_str).content
-    return result_json
+    response = req.get(api_str).content
+    response_json = json.loads(response)
+    return response_json
 
 
-my_json = api_wrapper("Trudeau", "2022-02-22", api_key)
+my_json = api_wrapper("trudeau", "2018-01-01", api_key)
 
-print(my_json)
+print(my_json['response'])
+
+# print(req.get("http://content.guardianapis.com/tags?q=Trudeau&api-key=91f67b2a-520b-4f9f-a4ca-edcb0d610454").content)
