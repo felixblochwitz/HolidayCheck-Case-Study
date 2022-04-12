@@ -28,7 +28,7 @@ utils.save_graphic('articles_over_time', df_grouped)
 # sending email
 # specifying sender and receiver email and server credentials
 from_addr = 'felix.blochwitz@gmail.com'
-password = 'Passwort'
+password = 'xxx'
 to_addr = 'felix.blochwitz@gmail.com'
 smtp_server = 'smtp.gmail.com'
 
